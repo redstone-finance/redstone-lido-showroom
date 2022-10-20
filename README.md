@@ -1,3 +1,3 @@
-# RedStone Showroom
+# RedStone Lido Showroom
 
-Simple app which demonstrate redstone integration with EVM chains.
+App which demonstrate redstone integration with Lido on Moonbeam chain.
