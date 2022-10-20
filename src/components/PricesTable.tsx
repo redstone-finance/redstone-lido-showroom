@@ -9,7 +9,7 @@ interface Props {
 
 export const PricesTable = ({ blockNumber, timestamp, prices }: Props) => {
   const pricesArray = Object.entries(prices).map(([key, price]) => ({
-    label: key.toUpperCase(),
+    label: key,
     value: price,
   }));
 
