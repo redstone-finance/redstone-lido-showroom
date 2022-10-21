@@ -31,9 +31,9 @@ export const chains: Chains = {
       decimals: 18,
     },
     blockExplorerUrls: ["https://moonscan.io"],
-    exampleContractAddress: "0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+    exampleContractAddress: "0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     contractExplorerUrl:
-      "https://moonscan.io/address/0x2e441aDC345dAeB11Ff9c2caE7eFD461E5525850",
+      "https://moonscan.io/address/0xaCf97fb2f2c336c45b799DAB925ad10ADC70fCAC",
     logo: MoonbeamLogo,
   },
 };
