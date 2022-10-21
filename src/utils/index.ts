@@ -4,7 +4,8 @@ export const timeout = (ms: number) => {
 
 export const emptyPrices = {
   stDOT: "",
-  wstDOT: ""
+  wstDOT: "",
+  dot: "",
 };
 
 export const formatPrice = (price: number) => {

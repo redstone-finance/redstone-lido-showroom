@@ -8,10 +8,12 @@ interface Props {
 }
 
 export const PricesTable = ({ blockNumber, timestamp, prices }: Props) => {
-  const pricesArray = Object.entries(prices).map(([key, price]) => ({
-    label: key,
-    value: price,
-  }));
+  const pricesArray = Object.entries(prices)
+    .map(([key, price]) => ({
+      label: key === "dot" ? key.toUpperCase() : key,
+      value: price,
+    }))
+    .sort((left, right) => (left.label < right.label ? -1 : 1));
 
   return (
     <table className="w-3/5 table-auto border">

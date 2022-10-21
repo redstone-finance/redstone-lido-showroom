@@ -28,10 +28,14 @@ export const usePricesFromContract = (
         setIsLoading(true);
         const contractAddress = network.exampleContractAddress;
         if (contractAddress) {
-          const { stDOTPrice, wstDOTPrice } = await fetchPrices(contractAddress, signer);
+          const { stDOTPrice, wstDOTPrice, dotPrice } = await fetchPrices(
+            contractAddress,
+            signer
+          );
           setPrices({
             stDOT: utils.formatUnits(stDOTPrice, 8),
-            wstDOT: utils.formatUnits(wstDOTPrice, 8)
+            wstDOT: utils.formatUnits(wstDOTPrice, 8),
+            dot: utils.formatUnits(dotPrice, 8),
           });
           const blockNumber = await signer.provider.getBlockNumber();
           setBlockNumber(blockNumber);
@@ -53,16 +57,20 @@ export const usePricesFromContract = (
     signer: providers.JsonRpcSigner
   ) => {
     const contract = new Contract(contractAddress, abi, signer);
-    const wrappedContract =
-      WrapperBuilder.wrapLite(contract).usingPriceFeed("redstone", {
-        asset: "DOT"
-      });
+    const wrappedContract = WrapperBuilder.wrapLite(contract).usingPriceFeed(
+      "redstone",
+      {
+        asset: "DOT",
+      }
+    );
     const stDOTPrice = await wrappedContract.stDOTPrice();
     const wstDOTPrice = await wrappedContract.wstDOTPrice();
+    const dotPrice = await wrappedContract.getDOTPriceInUSD();
     return {
       stDOTPrice,
-      wstDOTPrice
-    }
+      wstDOTPrice,
+      dotPrice,
+    };
   };
 
   const handleError = () => {
